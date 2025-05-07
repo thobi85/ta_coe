@@ -10,10 +10,11 @@ RUN apk add --no-cache --virtual .build-dependencies \
     build-base linux-headers gcc python3-dev git cargo
 
 # projektbezogene Variablen
-ARG PROJECT_BRANCH=2.1.4
+ARG PROJECT_TAG=v2.1.4
 
 # Projekt klonen – mit variabler Branch-Angabe
-RUN git clone --depth 1 --branch ${PROJECT_BRANCH} \
+ARG PROJECT_TAG=v2.1.4
+RUN git clone --depth 1 --branch ${PROJECT_TAG} \
     https://gitlab.com/DeerMaximum/ta-coe.git /opt/ta-coe
 
 WORKDIR /opt/ta-coe
