@@ -32,3 +32,14 @@ restarts and the data are transferred from the C.M.I. only piece by piece. It ca
 that there is no data yet and the request is answered with a status code 204.
 The full API documentation can be found at IP:9000/docs
 
+## Docker Compose
+In Docker Compose I use the command to start the script and to provide the relevant information
+
+```
+    command: >
+      python3 main.py
+      --coe-node 'number'
+      --coe-ip 'IP'
+      --coe-version v2
+      --debug
+```
