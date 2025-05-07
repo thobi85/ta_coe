@@ -1,5 +1,4 @@
-ARG PYTHON_VERSION=3.12-alpine
-FROM python:${PYTHON_VERSION}
+FROM python:3.12-alpine
 
 LABEL \
   org.opencontainers.image.title="Home Assistant Add-on: CoE to HTTP server" \
@@ -31,12 +30,6 @@ RUN AIOHTTP_NO_EXTENSIONS=1 pip install --no-cache-dir -r requirements.txt
 
 # Build-Abhängigkeiten entfernen
 RUN apk del --no-cache --purge .build-dependencies
-
-# Root-Dateien kopieren (falls vorhanden)
-COPY rootfs/ /
-
-# Startskript ausführbar machen
-RUN chmod a+x /etc/services.d/ta_coe/run
 
 # Optional: Ports deklarieren
 EXPOSE 9000 5441/udp 5442/udp
