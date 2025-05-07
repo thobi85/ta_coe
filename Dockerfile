@@ -5,19 +5,12 @@ LABEL \
   org.opencontainers.image.description="An addon to allows interaction with a C.M.I. as a CoE device, using a HTTP API." \
   org.opencontainers.image.licenses="MIT License"
 
-# Arch- und projektbezogene Variablen
-ARG TEMPIO_VERSION=2021.09.0
-ARG TARGETARCH
-ARG PROJECT_BRANCH=2.14
-
-# Install tempio (arch-spezifisch)
-RUN curl -sSLf -o /usr/bin/tempio \
-    "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${TARGETARCH}" \
-    && chmod +x /usr/bin/tempio
-
 # Build-Abhängigkeiten installieren
 RUN apk add --no-cache --virtual .build-dependencies \
     build-base linux-headers gcc python3-dev git cargo
+
+# projektbezogene Variablen
+ARG PROJECT_BRANCH=2.14
 
 # Projekt klonen – mit variabler Branch-Angabe
 RUN git clone --depth 1 --branch ${PROJECT_BRANCH} \
