@@ -2,6 +2,7 @@ name: Build Docker Container
 
 on:
   create:
+    types: [branch]
     branches:
       - '**'
 
