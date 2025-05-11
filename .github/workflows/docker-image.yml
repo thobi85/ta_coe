@@ -1,13 +1,14 @@
 name: Build Docker Container
 
 on:
+  workflow_dispatch:
   create:
-    types: [branch]
     branches:
       - '**'
 
 jobs:
   docker:
+    if: github.event_name == 'workflow_dispatch' || github.event.ref_type == 'branch'
     runs-on: ubuntu-latest
     steps:
       -
