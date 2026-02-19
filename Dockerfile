@@ -16,8 +16,9 @@ RUN git clone --depth 1 --branch ${PROJECT_TAG} \
 
 WORKDIR /opt/ta-coe
 
-# Install Python dependencies
-RUN AIOHTTP_NO_EXTENSIONS=1 pip install --no-cache-dir -r requirements.txt
+# Install uv package manager and Python dependencies
+RUN pip install --no-cache-dir uv && \
+    uv pip install --system -r pyproject.toml
 
 # Remove build dependencies
 RUN apk del --no-cache --purge .build-dependencies
