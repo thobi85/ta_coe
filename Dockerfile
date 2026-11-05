@@ -10,7 +10,7 @@ RUN apk add --no-cache --virtual .build-dependencies \
     build-base linux-headers gcc python3-dev git cargo
 
 # Clone project - with variable branch specification
-ARG PROJECT_TAG=v2.1.5
+ARG PROJECT_TAG=v2.1.6
 RUN git clone --depth 1 --branch ${PROJECT_TAG} \
     https://gitlab.com/DeerMaximum/ta-coe.git /opt/ta-coe
 
